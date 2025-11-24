@@ -6,10 +6,12 @@ import { SubmitButton } from '@/components/SubmitButton';
 import { generateStory } from '@/lib/api';
 import { useToast } from '@/hooks/use-toast';
 import { BookOpen } from 'lucide-react';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 const Upload = () => {
   const [images, setImages] = useState<File[]>([]);
   const [text, setText] = useState('');
+  const [mode, setMode] = useState<string>("story"); 
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const { toast } = useToast();
@@ -26,10 +28,10 @@ const Upload = () => {
 
     setLoading(true);
     try {
-      const result = await generateStory(images, text || null);
+      const result = await generateStory(images, text, mode || null);
       // Navigate to result page with story data and images
       navigate(`/result?sessionId=${result.sessionId}`, {
-        state: { story: result.story, images: images.map(img => URL.createObjectURL(img)) },
+        state: { story: result.story, images: images.map(img => URL.createObjectURL(img)), mode: mode },
       });
     } catch (error) {
       toast({
@@ -63,7 +65,21 @@ const Upload = () => {
               onImagesChange={setImages}
               maxImages={5}
             />
-
+            <div className="space-y-2">
+              <label className="font-medium text-sm text-gray-600">Writing Mode</label>
+              <Select onValueChange={setMode} defaultValue="story">
+                <SelectTrigger className="w-full">
+                  <SelectValue placeholder="Select mode" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="story">📖 Story Mode</SelectItem>
+                  <SelectItem value="sns">✨ SNS Mode</SelectItem>
+                  <SelectItem value="article">📰 Article Mode</SelectItem>
+                  <SelectItem value="caption">🖼 Caption Mode</SelectItem>
+                  <SelectItem value="ad">📢 Ad / Marketing Mode</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
             <div className="pt-4 border-t border-border">
               <TextInput
                 value={text}

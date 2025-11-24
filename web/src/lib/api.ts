@@ -22,7 +22,8 @@ const BACKEND_URL = "http://localhost:8000";  // ← FastAPI URL
  */
 export async function generateStory(
   images: File[],
-  text: string | null
+  text: string | null,
+  mode: string
 ): Promise<GenerateStoryResponse> {
   // Create FormData to send files
   const formData = new FormData();
@@ -36,7 +37,7 @@ export async function generateStory(
   if (text) {
     formData.append("text", text);
   }
-
+  formData.append("mode", mode); 
   try {
     const response = await fetch(`${BACKEND_URL}/generate-story`, {
       method: "POST",
