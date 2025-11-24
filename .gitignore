@@ -1,0 +1,120 @@
+# ---------------------------
+# Global
+# ---------------------------
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+*.swp
+*.swo
+*.env
+.env.*
+!.env.example
+node_modules/
+dist/
+build/
+coverage/
+__pycache__/
+.idea/
+.vscode/
+
+# ---------------------------
+# Python / FastAPI
+# ---------------------------
+backend/__pycache__/
+backend/.pytest_cache/
+backend/.mypy_cache/
+backend/.venv/
+backend/venv/
+backend/.ruff_cache/
+backend/*.pyc
+backend/*.pyo
+
+# Virtual Environment
+venv/
+env/
+.venv/
+
+# Uvicorn / FastAPI cache files
+*.db
+*.sqlite3
+
+# ---------------------------
+# Next.js / Web
+# ---------------------------
+web/node_modules/
+web/.next/
+web/.vercel/
+web/out/
+web/npm-debug.log
+web/yarn-error.log
+web/.env.local
+web/.env.development.local
+web/.env.production.local
+web/.env.test.local
+
+# ---------------------------
+# React Native / Expo
+# ---------------------------
+app/node_modules/
+app/.expo/
+app/.expo-shared/
+app/.expo/
+app/.expo/*
+app/.DS_Store
+app/npm-debug.log
+app/yarn-error.log
+app/.env
+app/android/
+app/ios/
+app/dist/
+app/expo-packager-cache/
+app/expo-web-cache/
+
+# For Expo's development builds
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+*.orig
+
+# ---------------------------
+# OS / Editor
+# ---------------------------
+*.orig
+*.lock
+*.bak
+*.patch
+*.diff
+*.rej
+
+# JetBrains
+*.imls
+.idea/
+
+# VS Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# ---------------------------
+# Logs
+# ---------------------------
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ---------------------------
+# Images / Binary
+# ---------------------------
+*.png~
+*.jpg~
+*.jpeg~
+*.gif~
+*.webp~
+*.tmp
