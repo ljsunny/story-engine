@@ -12,6 +12,8 @@ export interface GenerateStoryResponse {
   story: string;
 }
 
+const BACKEND_URL = "http://localhost:8000";  // ← FastAPI URL
+
 /**
  * Send images and optional text to the backend to generate a story
  * @param images Array of image files (max 5)
@@ -24,21 +26,20 @@ export async function generateStory(
 ): Promise<GenerateStoryResponse> {
   // Create FormData to send files
   const formData = new FormData();
-  
+
   // Append each image
-  images.forEach((image, index) => {
-    formData.append('images', image, image.name);
+  images.forEach((image) => {
+    formData.append("images", image, image.name);
   });
-  
+
   // Append text if provided
   if (text) {
-    formData.append('text', text);
+    formData.append("text", text);
   }
 
   try {
-    // TODO: Replace with actual backend URL
-    const response = await fetch('/api/generate-story', {
-      method: 'POST',
+    const response = await fetch(`${BACKEND_URL}/generate-story`, {
+      method: "POST",
       body: formData,
     });
 
@@ -49,7 +50,7 @@ export async function generateStory(
     const data = await response.json();
     return data;
   } catch (error) {
-    console.error('Error generating story:', error);
+    console.error("Error generating story:", error);
     throw error;
   }
 }
