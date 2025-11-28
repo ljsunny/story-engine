@@ -1,11 +1,3 @@
-# story-engine
-
-좋아! 아래는 **영어 + 한국어 혼합 버전 README.md** 초안이야.
-GitHub에 그대로 붙여 넣으면 깔끔하게 보이도록 구성해뒀어.
-필요하면 이미지, 배지, 설치 방법 등 더 추가할 수 있어.
-
----
-
 # 📘 **Contextual Story Engine**
 
 *AI-powered image-based story generator*
